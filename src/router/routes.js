@@ -16,6 +16,10 @@ const routes = [
         path: "/note/:id",
         component: () => import("pages/NoteSee.vue"),
       },
+      {
+        path: "/experience",
+        component: () => import("pages/Experience.vue"),
+      },
     ],
   },
 

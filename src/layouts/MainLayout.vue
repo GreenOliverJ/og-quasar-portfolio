@@ -43,22 +43,41 @@
             color="secondary"
             size=".6em"
           ></q-icon>
-          <q-icon
-            class="q-ml-md"
-            name="fa-brands fa-github"
-            color="black"
-          ></q-icon>
-          <q-icon
-            class="q-ml-md"
-            name="fa-brands fa-linkedin"
-            color="black"
-          ></q-icon>
-          <q-icon
-            class="q-ml-md"
-            name="fa-brands fa-instagram"
-            color="black"
-          ></q-icon>
+          <a href="https://github.com/GreenOliverJ" target="_blank">
+            <q-icon class="q-ml-md" name="fa-brands fa-github" color="black">
+            </q-icon>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/oliver-green-frontdesign/"
+            target="_blank"
+          >
+            <q-icon
+              class="q-ml-md"
+              name="fa-brands fa-linkedin"
+              color="black"
+            ></q-icon>
+          </a>
+          <a href="https://www.instagram.com/cocositoverde" target="_blank">
+            <q-icon
+              class="q-ml-md"
+              name="fa-brands fa-instagram"
+              color="black"
+            ></q-icon>
+          </a>
         </q-toolbar-title>
+        <img
+          alt="Oliver Green logo"
+          src="~assets/ogalpha.png"
+          style="
+            width: auto;
+            height: 50px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 10px;
+            margin-right: 10px;
+          "
+        />
       </q-toolbar>
 
       <q-tabs align="left">
