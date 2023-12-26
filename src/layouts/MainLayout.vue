@@ -83,7 +83,7 @@
       <q-tabs align="left">
         <q-route-tab to="/" label="Index" />
         <q-route-tab to="/notes" label="Add notes" />
-        <q-route-tab to="/page3" label="My experience" />
+        <q-route-tab to="/experience" label="My experience" />
       </q-tabs>
     </q-header>
 
