@@ -2,88 +2,86 @@
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-yellow text-black" height-hint="98">
       <q-toolbar>
-        <q-toolbar-title>
-          <!-- <q-avatar>
-            <img src="../assets/ogalpha.png" />
-          </q-avatar> -->
-          <q-icon
-            class="q-ml-md"
-            name="fas fa-code"
-            color="secondary"
-            size=".6em"
-          ></q-icon>
-          <!-- <q-icon
-            class="q-ml-md"
-            name="fas fa-computer"
-            color="bclack"
-          ></q-icon>
-          <q-icon
-            class="q-ml-md"
-            name="fas fa-laptop-code"
-            color="black"
-          ></q-icon> -->
-          <q-icon
-            class="q-ml-md"
-            name="fa-brands fa-square-js"
-            color="black"
-          ></q-icon>
-          <q-icon
-            class="q-ml-md"
-            name="fa-brands fa-react"
-            color="black"
-          ></q-icon>
-          <q-icon
-            class="q-ml-md"
-            name="fa-brands fa-vuejs"
-            color="black"
-          ></q-icon>
-          <q-icon
-            class="q-ml-lg"
-            name="fas fa-share"
-            color="secondary"
-            size=".6em"
-          ></q-icon>
-          <a href="https://github.com/GreenOliverJ" target="_blank">
-            <q-icon class="q-ml-md" name="fa-brands fa-github" color="black">
-            </q-icon>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/oliver-green-frontdesign/"
-            target="_blank"
-          >
+        <!-- Oliver Green logo on the left -->
+
+        <!-- Spacer to push content to the right -->
+        <q-space></q-space>
+        <q-space></q-space>
+
+        <!-- Toolbar content -->
+        <div class="link-icons">
+          <q-toolbar-title>
+            <!-- <q-avatar>
+              <img src="../assets/ogalpha.png" />
+            </q-avatar> -->
             <q-icon
               class="q-ml-md"
-              name="fa-brands fa-linkedin"
-              color="black"
+              name="fas fa-code"
+              color="secondary"
+              size=".6em"
             ></q-icon>
-          </a>
-          <a href="https://www.instagram.com/cocositoverde" target="_blank">
+            <!-- <q-icon
+              class="q-ml-md"
+              name="fas fa-computer"
+              color="bclack"
+            ></q-icon>
             <q-icon
               class="q-ml-md"
-              name="fa-brands fa-instagram"
+              name="fas fa-laptop-code"
+              color="black"
+            ></q-icon> -->
+            <q-icon
+              class="q-ml-md"
+              name="fa-brands fa-square-js"
               color="black"
             ></q-icon>
-          </a>
-        </q-toolbar-title>
-        <img
-          alt="Oliver Green logo"
-          src="~assets/ogalpha.png"
-          style="
-            width: auto;
-            height: 50px;
-            position: absolute;
-            right: 0;
-            top: 0;
-            margin: 10px;
-            margin-right: 10px;
-          "
-        />
+            <q-icon
+              class="q-ml-md"
+              name="fa-brands fa-react"
+              color="black"
+            ></q-icon>
+            <q-icon
+              class="q-ml-md"
+              name="fa-brands fa-vuejs"
+              color="black"
+            ></q-icon>
+            <q-icon
+              class="q-ml-lg"
+              name="fas fa-share"
+              color="secondary"
+              size=".6em"
+            ></q-icon>
+            <a href="https://github.com/GreenOliverJ" target="_blank">
+              <q-icon class="q-ml-md" name="fa-brands fa-github" color="black">
+              </q-icon>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/oliver-green-frontdesign/"
+              target="_blank"
+            >
+              <q-icon
+                class="q-ml-md"
+                name="fa-brands fa-linkedin"
+                color="black"
+              ></q-icon>
+            </a>
+            <a href="https://www.instagram.com/cocositoverde" target="_blank">
+              <q-icon
+                class="q-ml-md"
+                name="fa-brands fa-instagram"
+                color="black"
+              ></q-icon>
+            </a>
+          </q-toolbar-title>
+        </div>
       </q-toolbar>
 
+      <!-- Tabs -->
       <q-tabs align="left">
         <q-route-tab to="/" label="Index" />
         <q-route-tab to="/notes" label="Add notes" />
-        <q-route-tab to="/experience" label="My experience" />
+        <q-route-tab to="/experience" label="Experience" />
+        <q-route-tab to="/projects" label="Projects" />
       </q-tabs>
     </q-header>
 
@@ -114,3 +112,10 @@ export default defineComponent({
   }
 });
 </script>
+<style>
+.link-icons {
+  display: flex;
+  justify-content: flex-end;
+}
+</style>
+``` ```

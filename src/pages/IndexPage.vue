@@ -17,7 +17,7 @@ export default defineComponent({
 <template>
   <q-page class="flex flex-center">
     <img
-      alt="Quasar logo"
+      alt="Oliver Green logo"
       src="~assets/ogalpha.png"
       style="width: auto; height: 100px"
     />

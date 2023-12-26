@@ -1,14 +1,29 @@
 <template>
-  <div class="experience-page">
-    <h1>Work Experience</h1>
-    <ul>
-      <li v-for="experience in experiences" :key="experience.id">
-        <h2>{{ experience.company }}</h2>
-        <p>{{ experience.position }}</p>
-        <p>{{ experience.duration }}</p>
-      </li>
-    </ul>
-  </div>
+  <q-page padding>
+    <div class="q-pa-md">
+      <q-card
+        v-for="experience in experiences"
+        :key="experience.id"
+        class="q-mb-md"
+      >
+        <q-card-section>
+          <div class="text-h6">{{ experience.position }}</div>
+          <div class="text-subtitle2">Company: {{ experience.company }}</div>
+        </q-card-section>
+
+        <q-card-section>
+          <div class="text-caption">
+            {{ experience.startDate }} - {{ experience.endDate }}
+          </div>
+          <ul>
+            <li v-for="detail in experience.details" :key="detail">
+              {{ detail }}
+            </li>
+          </ul>
+        </q-card-section>
+      </q-card>
+    </div>
+  </q-page>
 </template>
 
 <script>
@@ -18,16 +33,18 @@ export default {
       experiences: [
         {
           id: 1,
-          company: "ABC Company",
-          position: "Software Engineer",
-          duration: "Jan 2020 - Present"
-        },
-        {
-          id: 2,
-          company: "XYZ Corporation",
-          position: "Frontend Developer",
-          duration: "Mar 2018 - Dec 2019"
+          position: "Software Developer - Full Stack",
+          company: "Katode",
+          startDate: "Jan 2023",
+          endDate: "Present",
+          details: [
+            "Developing and maintaining erp web application.",
+            "I've been preparing the app for new clients and I've been working on new features, testing and fixing bugs for existing clients. I've had full responsability of the new version. Adding new styiling, created various new components, including an excel add-in for editing data in the app. I've also been working on the backend, creating new endpoints, setting up sockets, fixing bugs, API calls to a third party site used to handle client information, webhooks and setting up a test server in Digital Ocean, using Docker and github actions; this enables developers to easily test their code before pushing to production.",
+            "Collaborating with cross-functional teams, including designers, developers and product owners in an agile environment",
+            "Working with: Vue.js, Quasar Framework, React.js, Node.js, Express.js, MongoDB, Docker, Digital Ocean, Git, Github Actions, Azure, Firebase, excel addins."
+          ]
         }
+        // ... add more experiences here
       ]
     };
   }
@@ -35,21 +52,5 @@ export default {
 </script>
 
 <style scoped>
-.experience-page {
-  margin: 20px;
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-
-p {
-  margin-bottom: 5px;
-}
+/* Add your styles here */
 </style>
