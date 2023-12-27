@@ -2,7 +2,20 @@
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-yellow text-black" height-hint="98">
       <q-toolbar>
+        <!-- Tabs -->
+        <q-tabs align="left">
+          <q-route-tab to="/" label="Index" />
+          <q-route-tab to="/notes" label="Add notes" />
+          <q-route-tab to="/experience" label="Experience" />
+          <q-route-tab to="/projects" label="Projects" />
+        </q-tabs>
         <!-- Oliver Green logo on the left -->
+        <!-- <div style="width: 10px">
+          <img
+            src="../assets/ogsoftdev.png"
+            style="width: 400px; margin-top: 10px"
+          />
+        </div> -->
 
         <!-- Spacer to push content to the right -->
         <q-space></q-space>
@@ -11,9 +24,6 @@
         <!-- Toolbar content -->
         <div class="link-icons">
           <q-toolbar-title>
-            <!-- <q-avatar>
-              <img src="../assets/ogalpha.png" />
-            </q-avatar> -->
             <q-icon
               class="q-ml-md"
               name="fas fa-code"
@@ -75,14 +85,6 @@
           </q-toolbar-title>
         </div>
       </q-toolbar>
-
-      <!-- Tabs -->
-      <q-tabs align="left">
-        <q-route-tab to="/" label="Index" />
-        <q-route-tab to="/notes" label="Add notes" />
-        <q-route-tab to="/experience" label="Experience" />
-        <q-route-tab to="/projects" label="Projects" />
-      </q-tabs>
     </q-header>
 
     <q-page-container>
