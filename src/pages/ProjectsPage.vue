@@ -4,7 +4,8 @@
       <q-card v-for="project in projects" :key="project.id" class="q-mb-md">
         <q-card-section>
           <div class="text-h6">{{ project.title }}</div>
-          <q-video :src="project.videoUrl"></q-video>
+          <!-- Here you can use your video component -->
+          <VideoPlayer :videoUrl="project.videoUrl" />
         </q-card-section>
 
         <q-card-section>
@@ -15,23 +16,20 @@
   </q-page>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      projects: [
-        {
-          id: 1,
-          title: "Project 1",
-          videoUrl: "https://vimeo.com/824537640",
-          description:
-            "MEVN Project. Dynamic door creator and pricing editor. Allows user to create door to send price to invoice."
-        }
-        // ... add more projects here
-      ]
-    };
+<script setup>
+import { ref } from "vue";
+import VideoPlayer from "../components/VideoPlayer.vue";
+
+const projects = ref([
+  {
+    id: 1,
+    title: "Project 1",
+    videoUrl: "https://vimeo.com/824537640",
+    description:
+      "MEVN Project. Dynamic door creator and pricing editor. Allows user to create door to send price to invoice."
   }
-};
+  // ... add more projects here
+]);
 </script>
 
 <style scoped>
