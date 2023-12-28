@@ -15,6 +15,10 @@
               class="center-video q-mb-md"
               :videoId="video.videoId"
             />
+            <VideoDisplay
+              class="center-video q-mb-md"
+              :videoId="video.videoId"
+            />
             <div>{{ video.description }}</div>
           </div>
         </q-card-section>
@@ -30,6 +34,7 @@
 <script setup>
 import { ref } from "vue";
 import VideoPlayer from "../components/VideoPlayer.vue";
+import VideoDisplay from "../components/VideoDisplay.vue";
 
 const videoIds = ref(["824537640", "824537640"]);
 
