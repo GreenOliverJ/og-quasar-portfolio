@@ -1,4 +1,3 @@
-<!-- src/components/VideoDisplay.vue -->
 <template>
   <div>
     <video v-if="videoUrl" controls>
@@ -11,23 +10,26 @@
 
 <script>
 import { ref, onMounted } from "vue";
-// Import the initialized Firebase app
-import { app } from "src/boot/firebaseConfig";
-import "firebase/storage";
-
-// Now you can use the `app` object to access Firebase services
-const storage = app.storage();
-// import { storage } from "src/boot/firebaseConfig"; // adjust the path as necessary
+import {
+  getStorage,
+  ref as storageRef,
+  getDownloadURL
+} from "firebase/storage";
+import { app } from "src/boot/firebaseConfig"; // adjust the path as necessary
 
 export default {
   setup() {
     const videoUrl = ref(null);
 
     onMounted(async () => {
+      debugger;
       try {
-        const url = await storage
-          .refFromURL("gs://og-quasar-portfolio.appspot.com/IMG_4801.MOV")
-          .getDownloadURL();
+        const storage = getStorage(app);
+        const storageReference = storageRef(
+          storage,
+          "gs://og-quasar-portfolio.appspot.com/IMG_4801.MOV"
+        );
+        const url = await getDownloadURL(storageReference);
         videoUrl.value = url;
       } catch (error) {
         console.error("Error fetching video:", error);
