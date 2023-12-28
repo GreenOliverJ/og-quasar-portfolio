@@ -44,8 +44,8 @@ const projects = ref([
     videos: [
       {
         id: 1,
-        videoUrl: "gs://og-quasar-portfolio.appspot.com/IMG_4801.MOV",
-        videoTitle: "MEVN Dynamic door creator and pricing editor",
+        videoUrl: "gs://og-quasar-portfolio.appspot.com/KatodeDynamicDoor.mov",
+        videoTitle: "MEVN Dynamic door creator and pricing editor.",
         description:
           "MEVN Project. Dynamic door creator and pricing editor. Allows user to create door to send price to invoice."
       }
@@ -56,14 +56,39 @@ const projects = ref([
     videos: [
       {
         id: 1,
-        videoUrl: "gs://og-quasar-portfolio.appspot.com/IMG_4801.MOV",
-        videoTitle: "MEVN Dynamic door creator and pricing editor",
+        videoUrl: "gs://og-quasar-portfolio.appspot.com/KatodeStyling.mov",
+        videoTitle: "Styling, locale, profile, theme, and layout.",
         description:
-          "MEVN Project. Dynamic door creator and pricing editor. Allows user to create door to send price to invoice."
+          "New styling for the site, locale buttons and translation, user profile pic, dark and light theme, and layout items."
+      }
+    ]
+  },
+  {
+    id: 3,
+    videos: [
+      {
+        id: 1,
+        videoUrl: "gs://og-quasar-portfolio.appspot.com/KatodeDragAndDrop.mov",
+        videoTitle:
+          "Drag and drop between cells and bulk delete functionality.",
+        description:
+          "Implemented drag and drop functionality between cells and bulk delete functionality. Fixes data, depending on date and employee, also sets new group info is the cells are in a group project."
+      }
+    ]
+  },
+  {
+    id: 4,
+    videos: [
+      {
+        id: 1,
+        videoUrl: "gs://og-quasar-portfolio.appspot.com/KatodeTaskList.mov",
+        videoTitle:
+          "Task list for push off projects and other tasks for projects and employees.",
+        description:
+          "A task list for pushing off tasks from project cells and creating other tasks for projects, and employees. The tasks are shown in the project's dialog, informs employee in dashboard if there are pending tasks and allows user to filter by employee ans task type."
       }
     ]
   }
-  // ... add more projects here
 ]);
 </script>
 

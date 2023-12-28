@@ -1,6 +1,6 @@
 <template>
   <div>
-    <video class="video-player" v-if="videoUrl" controls>
+    <video class="video-player" v-if="videoUrl" controls muted>
       <source :src="videoUrl" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -28,7 +28,6 @@ export default {
     const videoUrl = ref(null);
 
     const loadVideo = async () => {
-      debugger;
       try {
         const storage = getStorage(app);
         const storageReference = storageRef(storage, props.videoPath);
