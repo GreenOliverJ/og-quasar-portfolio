@@ -11,13 +11,13 @@
             :key="video.videoId"
           >
             <div class="text-subtitle1">{{ video.videoTitle }}</div>
-            <VideoPlayer
+            <!-- <VideoPlayer
               class="center-video q-mb-md"
               :videoId="video.videoId"
-            />
+            /> -->
             <VideoDisplay
               class="center-video q-mb-md"
-              :videoId="video.videoId"
+              :videoPath="video.videoUrl"
             />
             <div>{{ video.description }}</div>
           </div>
@@ -33,7 +33,7 @@
 
 <script setup>
 import { ref } from "vue";
-import VideoPlayer from "../components/VideoPlayer.vue";
+// import VideoPlayer from "../components/VideoPlayer.vue";
 import VideoDisplay from "../components/VideoDisplay.vue";
 
 const videoIds = ref(["824537640", "824537640"]);
@@ -44,7 +44,7 @@ const projects = ref([
     videos: [
       {
         id: 1,
-        videoId: "824537640",
+        videoUrl: "gs://og-quasar-portfolio.appspot.com/IMG_4801.MOV",
         videoTitle: "MEVN Dynamic door creator and pricing editor",
         description:
           "MEVN Project. Dynamic door creator and pricing editor. Allows user to create door to send price to invoice."
@@ -56,7 +56,7 @@ const projects = ref([
     videos: [
       {
         id: 1,
-        videoId: "824537640",
+        videoUrl: "gs://og-quasar-portfolio.appspot.com/IMG_4801.MOV",
         videoTitle: "MEVN Dynamic door creator and pricing editor",
         description:
           "MEVN Project. Dynamic door creator and pricing editor. Allows user to create door to send price to invoice."
