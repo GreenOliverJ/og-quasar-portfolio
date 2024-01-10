@@ -11,11 +11,16 @@
             :key="video.videoId"
           >
             <div class="text-subtitle1">{{ video.videoTitle }}</div>
+            <q-btn label="View Video" @click="promptPassword(video)"></q-btn>
+            <!-- PasswordProtection component is shown only when passwordPromptNeeded is true -->
+            <PasswordProtection @password-verified="onPasswordVerified" />
+            <!-- VideoDisplay should be shown only if the password is correct -->
             <!-- <VideoPlayer
               class="center-video q-mb-md"
               :videoId="video.videoId"
             /> -->
             <VideoDisplay
+              v-if="authorizedVideos.includes(video.id)"
               class="center-video q-mb-md"
               :videoPath="video.videoUrl"
             />
@@ -29,12 +34,14 @@
       </q-card>
     </div>
   </q-page>
+  <!-- <PasswordProtection /> -->
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 // import VideoPlayer from "../components/VideoPlayer.vue";
 import VideoDisplay from "../components/VideoDisplay.vue";
+import PasswordProtection from "../components/PasswordProtection.vue";
 
 const videoIds = ref(["824537640", "824537640"]);
 
@@ -90,6 +97,21 @@ const projects = ref([
     ]
   }
 ]);
+const authorizedVideos = ref([]);
+const passwordPromptNeeded = ref(false);
+const videoBeingPrompted = ref(null);
+
+const promptPassword = (video) => {
+  debugger;
+  passwordPromptNeeded.value = true;
+  videoBeingPrompted.value = video.id;
+};
+
+const onPasswordVerified = () => {
+  debugger;
+  authorizedVideos.value.push(videoBeingPrompted.value);
+  passwordPromptNeeded.value = false;
+};
 </script>
 
 <style scoped>
