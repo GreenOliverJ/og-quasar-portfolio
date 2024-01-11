@@ -1,6 +1,79 @@
 <template>
   <q-page padding>
     <div class="projects-container">
+      <q-dialog v-model="wrongPasswordDialog" persistent>
+        <q-card style="width: 200px">
+          <q-bar class="bg-red-4" style="border-bottom: 1px solid #cccccc">
+            <q-icon name="mdi-file-pdf" />
+            <div>{{ currentTitle }}</div>
+            <q-space />
+            <q-btn
+              dense
+              flat
+              icon="fas fa-close"
+              @click="wrongPasswordDialog = false"
+            >
+              <q-tooltip content-class="bg-white text-primary">Close</q-tooltip>
+            </q-btn>
+          </q-bar>
+          <q-card-section>
+            <div class="text-h6">Wrong Password</div>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
+
+      <q-dialog v-model="dialog">
+        <q-card style="width: 700px">
+          <q-form @submit="checkPassword">
+            <div class="text-2em q-ma-md">
+              Due to the projects containing sensitive data, I kindly request
+              you ask for a password.
+            </div>
+            <q-input
+              class="q-ma-md"
+              v-model="password"
+              type="password"
+              label="Enter password to view videos"
+              style="width: 100%; max-width: 520px"
+            ></q-input>
+            <q-card-actions align="right">
+              <q-btn class="q-ma-sm bg-green-4" dense type="submit"
+                >Submit</q-btn
+              >
+              <q-btn class="bg-yellow-4" dense @click="openEmailDialog"
+                >Request a password</q-btn
+              >
+            </q-card-actions>
+          </q-form>
+        </q-card>
+      </q-dialog>
+
+      <q-dialog v-model="emailDialog" persistent>
+        <q-card style="width: 700vw">
+          <q-bar class="bg-yellow-4" style="border-bottom: 1px solid #cccccc">
+            Send your password request
+            <q-icon name="mdi-file-pdf" />
+            <div>{{ currentTitle }}</div>
+            <q-space />
+            <q-btn dense flat icon="fas fa-close" @click="emailDialog = false">
+              <q-tooltip content-class="bg-white text-primary">Close</q-tooltip>
+            </q-btn>
+          </q-bar>
+          <q-card-section>
+            <q-input v-model="userName" label="Enter your name"></q-input>
+            <q-input v-model="userName" label="Enter your company"></q-input>
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn
+              class="q-ma-sm bg-green-4"
+              dense
+              label="Send request"
+              @click="sendRequest"
+            ></q-btn>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+
       <q-card v-for="project in projects" :key="project.id" class="q-mb-md">
         <q-card-section>
           <div class="text-h6">{{ project.title }}</div>
@@ -11,16 +84,8 @@
             :key="video.videoId"
           >
             <div class="text-subtitle1">{{ video.videoTitle }}</div>
-            <q-btn label="View Video" @click="promptPassword(video)"></q-btn>
-            <!-- PasswordProtection component is shown only when passwordPromptNeeded is true -->
-            <PasswordProtection @password-verified="onPasswordVerified" />
-            <!-- VideoDisplay should be shown only if the password is correct -->
-            <!-- <VideoPlayer
-              class="center-video q-mb-md"
-              :videoId="video.videoId"
-            /> -->
             <VideoDisplay
-              v-if="authorizedVideos.includes(video.id)"
+              v-if="authorized"
               class="center-video q-mb-md"
               :videoPath="video.videoUrl"
             />
@@ -38,12 +103,12 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref, onMounted } from "vue";
+import { useQuasar } from "quasar";
 // import VideoPlayer from "../components/VideoPlayer.vue";
 import VideoDisplay from "../components/VideoDisplay.vue";
-import PasswordProtection from "../components/PasswordProtection.vue";
 
-const videoIds = ref(["824537640", "824537640"]);
+const $q = useQuasar();
 
 const projects = ref([
   {
@@ -97,20 +162,55 @@ const projects = ref([
     ]
   }
 ]);
-const authorizedVideos = ref([]);
-const passwordPromptNeeded = ref(false);
-const videoBeingPrompted = ref(null);
 
-const promptPassword = (video) => {
-  debugger;
-  passwordPromptNeeded.value = true;
-  videoBeingPrompted.value = video.id;
+const authorized = ref(false);
+const password = ref("");
+let dialog = ref(false);
+const wrongPasswordDialog = ref(false);
+const emailDialog = ref(false);
+const userName = ref("");
+const companyName = ref("");
+
+onMounted(() => {
+  if (!authorized.value) {
+    dialog.value = true;
+    // $q.dialog({
+    //   title: "Enter Password to View Videos",
+    //   message: "Enter Password to View Videos",
+    //   prompt: {
+    //     model: password,
+    //     type: "password"
+    //   },
+    //   cancel: true,
+    //   persistent: true
+    // }).onOk(() => {
+    //   checkPassword();
+    // });
+  }
+});
+
+const openEmailDialog = () => {
+  emailDialog.value = true;
 };
 
-const onPasswordVerified = () => {
-  debugger;
-  authorizedVideos.value.push(videoBeingPrompted.value);
-  passwordPromptNeeded.value = false;
+const sendRequest = () => {
+  const mailtoLink = `mailto:greenoliverj@gmail.com?subject=Password Request&body=I'm requesting a password to access your project videos. Thank you. Kind regards, ${userName.value} from ${companyName.value}`;
+  window.location.href = mailtoLink;
+  closeEmailDialog();
+};
+
+const checkPassword = () => {
+  if (password.value === "letmesee") {
+    authorized.value = true;
+    dialog.value = false;
+  } else {
+    wrongPasswordDialog.value = true;
+    // $q.notify({
+    //   message: "Wrong password",
+    //   color: "negative",
+    //   icon: "report_problem"
+    // });
+  }
 };
 </script>
 

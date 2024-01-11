@@ -42,7 +42,6 @@ const openDialog = () => {
 watch(
   () => props["open-password-dialog"],
   (newVal) => {
-    debugger;
     openDialog();
     if (!newVal) {
       // Reset password when the dialog is closed
