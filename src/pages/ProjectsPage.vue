@@ -61,7 +61,7 @@
           </q-bar>
           <q-card-section>
             <q-input v-model="userName" label="Enter your name"></q-input>
-            <q-input v-model="userName" label="Enter your company"></q-input>
+            <q-input v-model="companyName" label="Enter your company"></q-input>
           </q-card-section>
           <q-card-actions align="right">
             <q-btn
