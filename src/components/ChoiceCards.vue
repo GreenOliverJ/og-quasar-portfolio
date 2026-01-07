@@ -1,6 +1,7 @@
 <template>
     <div class="q-pa-md row items-start q-gutter-md justify-center move-up">
-        <q-card class="my-card col-xs-12 col-sm-6 col-md-3 bg-dark-card text-white pointer-cursor transform-hover">
+        <q-card
+            class="glass-panel my-card col-xs-12 col-sm-6 col-md-3 bg-dark-card text-white pointer-cursor transform-hover">
             <q-card-section class="text-center">
                 <q-icon name="architecture" size="4rem" color="primary" class="q-mb-md icon-hover" />
                 <div class="text-h6 text-weight-bold">Robust Architecture</div>
@@ -12,7 +13,8 @@
             </q-card-section>
         </q-card>
 
-        <q-card class="my-card col-xs-12 col-sm-6 col-md-3 bg-dark-card text-white pointer-cursor transform-hover">
+        <q-card
+            class="glass-panel my-card col-xs-12 col-sm-6 col-md-3 bg-dark-card text-white pointer-cursor transform-hover">
             <q-card-section class="text-center">
                 <q-icon name="psychology" size="4rem" color="accent" class="q-mb-md icon-hover" />
                 <div class="text-h6 text-weight-bold">User-Centric UX</div>
@@ -23,7 +25,8 @@
             </q-card-section>
         </q-card>
 
-        <q-card class="my-card col-xs-12 col-sm-6 col-md-3 bg-dark-card text-white pointer-cursor transform-hover">
+        <q-card
+            class="glass-panel my-card col-xs-12 col-sm-6 col-md-3 bg-dark-card text-white pointer-cursor transform-hover">
             <q-card-section class="text-center">
                 <q-icon name="rocket_launch" size="4rem" color="secondary" class="q-mb-md icon-hover" />
                 <div class="text-h6 text-weight-bold">End-to-End Delivery</div>
@@ -75,6 +78,13 @@ export default defineComponent({
 .move-up {
     margin-top: -50px;
     position: relative;
-    z-index: 10;
+    z-index: 1;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
 }
 </style>
